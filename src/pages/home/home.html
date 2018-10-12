@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="text-align:center;" padding>
+  <div *ngIf="showSnackbar" class="snackbar bg-success">
+    <p style="color:white">Data Added successfully</p>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Car No:</ion-label>
+      <ion-input [(ngModel)]="searchTerm" type="text" name="searchterm"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button="" (click)="getUserData()">Get User</button>
+  <ion-card style="text-align:left;">
+    <ion-card-header>
+      User Information
+    </ion-card-header>
+    <ion-card-content>
+      <section>
+        <p><b>Car No :</b> <span style="font-size:1.1em;margin-left:10px">{{userData['car_no']}}</span></p>
+        <p><b>Name :</b> <span style="font-size:1.1em;margin-left:10px">{{userData.name}}</span></p>
+        <p><b>Contact :</b> <span style="font-size:1.1em;margin-left:10px">{{userData.contact}}</span></p>
+      </section>
+    </ion-card-content>
+  </ion-card>
+  <ion-card style="text-align:left;">
+    <ion-card-header>
+      Add Data
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Car No :</ion-label>
+          <ion-input [(ngModel)]="postData.car_no" type="text" name="post_user_car_no" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Name :</ion-label>
+          <ion-input [(ngModel)]="postData.name"  maxlength="20" type="text" name="post_user_name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contact No :</ion-label>
+          <ion-input [(ngModel)]="postData.contact" maxlength="10" type="text" name="post_user_contact" required></ion-input>
+        </ion-item>
+      </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <section style="text-align: center">
+    <button ion-button (click)="addUser()">Add User</button>
+  </section>
+</ion-content>
